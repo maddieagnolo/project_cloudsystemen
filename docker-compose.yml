@@ -3,3 +3,9 @@ services:
     build: .
     container_name: petshelter
     restart: unless-stopped
+    networks:
+      - web
+
+networks:
+  web:
+    external: true
