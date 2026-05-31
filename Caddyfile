@@ -1,3 +1,0 @@
-petshelter-maddie.duckdns.org {
-    reverse_proxy petshelter:3000
-}
