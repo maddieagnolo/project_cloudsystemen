@@ -1,0 +1,23 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy to server
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: Maddie
+          port: 2222
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd /home/Maddie/project_cloudsystemen
+            git pull
+            docker-compose up -d --build
